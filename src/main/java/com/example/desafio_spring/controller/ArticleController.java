@@ -30,7 +30,7 @@ public class ArticleController {
         return new ResponseEntity<>(articleService.getAll(), HttpStatus.OK);
     }
 
-    @GetMapping(path = "/articles/")
+    @GetMapping("/articles/filter")
     public ResponseEntity<List<Article>> getAllByCategory(@RequestParam String category) throws NotFoundException {
         return new ResponseEntity<>(articleService.getAllByCategory(category), HttpStatus.OK);
     }
