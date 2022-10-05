@@ -1,5 +1,6 @@
 package com.example.desafio_spring.controller;
 
+import com.example.desafio_spring.dto.ArticleDTO;
 import com.example.desafio_spring.model.Article;
 import com.example.desafio_spring.service.IArticle;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class ArticleController {
 
     @PostMapping("/insert-articles-request")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<List<Article>> createNewArticle(@RequestBody Article newArticle) {
+    public ResponseEntity<List<ArticleDTO>> createNewArticle(@RequestBody Article newArticle) {
         return new ResponseEntity<>(articleService.createNewArticle(newArticle), HttpStatus.CREATED);
     }
 }
