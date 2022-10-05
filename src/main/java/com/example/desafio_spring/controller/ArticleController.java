@@ -29,4 +29,9 @@ public class ArticleController {
     public ResponseEntity<List<Article>> getAll() throws NotFoundException {
         return new ResponseEntity<>(articleService.getAll(), HttpStatus.OK);
     }
+
+    @GetMapping(path = "/articles/")
+    public ResponseEntity<List<Article>> getAllByCategory(@RequestParam String category) throws NotFoundException {
+        return new ResponseEntity<>(articleService.getAllByCategory(category), HttpStatus.OK);
+    }
 }

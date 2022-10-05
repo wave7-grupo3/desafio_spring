@@ -12,14 +12,15 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class ArticleRepository {
     String LINK_FILE = "src/main/resources/products.json";
     ObjectMapper mapper = new ObjectMapper();
+    List<Article> articlesList;
 
     public List<Article> getAll() throws NotFoundException {
-        List<Article> articlesList;
 
         try {
             articlesList = Arrays.asList(mapper.readValue(new File(LINK_FILE), Article[].class));
@@ -31,7 +32,7 @@ public class ArticleRepository {
 
     public List<Article> createNewArticle(Article newArticle) throws WriterValueException, NotFoundException {
         ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
-        List<Article> articlesList = getAll();
+        articlesList = getAll();
 
         articlesList = new ArrayList<>(articlesList);
         articlesList.add(newArticle);
@@ -42,6 +43,14 @@ public class ArticleRepository {
             throw new WriterValueException("The file wasn't written!");
         }
         return articlesList;
+    }
+
+    public List<Article> getAllByCategory(String category) throws NotFoundException {
+        articlesList = getAll();
+
+        return articlesList.stream()
+                .filter(article -> article.getCategory().equalsIgnoreCase(category))
+                .collect(Collectors.toList());
     }
 
 }

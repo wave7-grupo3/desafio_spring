@@ -27,8 +27,12 @@ public class ArticleService implements IArticle {
 
     @Override
     public List<Article> getAll() throws NotFoundException {
-        List<Article> allArticles = articleRepository.getAll();
-        return allArticles;
+        return articleRepository.getAll();
+    }
+
+    @Override
+    public List<Article> getAllByCategory(String category) throws NotFoundException {
+        return articleRepository.getAllByCategory(category);
     }
 
 }

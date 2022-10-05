@@ -10,4 +10,5 @@ import java.util.List;
 public interface IArticle {
     List<ArticleDTO> createNewArticle(Article newArticle) throws NotFoundException, WriterValueException;
     List<Article> getAll() throws NotFoundException;
+    List<Article> getAllByCategory(String category) throws NotFoundException;
 }
