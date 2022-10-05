@@ -1,5 +1,6 @@
 package com.example.desafio_spring.controller;
 
+import com.example.desafio_spring.advice.exception.NotFoundException;
 import com.example.desafio_spring.dto.ArticleDTO;
 import com.example.desafio_spring.model.Article;
 import com.example.desafio_spring.service.IArticle;
@@ -19,7 +20,7 @@ public class ArticleController {
 
     @PostMapping("/insert-articles-request")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<List<ArticleDTO>> createNewArticle(@RequestBody Article newArticle) {
+    public ResponseEntity<List<ArticleDTO>> createNewArticle(@RequestBody Article newArticle) throws NotFoundException {
         return new ResponseEntity<>(articleService.createNewArticle(newArticle), HttpStatus.CREATED);
     }
 }
