@@ -1,5 +1,7 @@
 package com.example.desafio_spring.repository;
 
+import com.example.desafio_spring.advice.exception.NotFoundException;
+import com.example.desafio_spring.advice.exception.WriterValueException;
 import com.example.desafio_spring.model.Article;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,7 +17,7 @@ import java.util.List;
 public class ArticleRepository {
     ObjectMapper mapper = new ObjectMapper();
 
-    public List<Article> createNewArticle(Article newArticle) {
+    public List<Article> createNewArticle(Article newArticle) throws NotFoundException, WriterValueException {
         ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
         List<Article> articlesList;
 
@@ -24,7 +26,7 @@ public class ArticleRepository {
         try {
             articlesList = Arrays.asList(mapper.readValue(new File(LINK_FILE), Article[].class));
         } catch (Exception ex) {
-            throw new RuntimeException(ex);
+            throw new NotFoundException("Article not found!");
         }
 
         articlesList = new ArrayList<>(articlesList);
@@ -33,7 +35,7 @@ public class ArticleRepository {
         try {
             writer.writeValue(new File(LINK_FILE), articlesList);
         } catch (Exception ex) {
-            System.out.println("Erro ao gravar o arquivo.");
+            throw new WriterValueException("The file wasn't written!");
         }
         return articlesList;
     }
