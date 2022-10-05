@@ -53,4 +53,10 @@ public class ArticleRepository {
                 .collect(Collectors.toList());
     }
 
+    public List<Article> getAllByShipping(List<Article> articles) {
+        return articles.stream()
+                .filter(Article::getFreeShipping)
+                .collect(Collectors.toList());
+    }
+
 }

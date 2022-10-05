@@ -34,4 +34,12 @@ public class ArticleController {
     public ResponseEntity<List<Article>> getAllByCategory(@RequestParam String category) throws NotFoundException {
         return new ResponseEntity<>(articleService.getAllByCategory(category), HttpStatus.OK);
     }
+
+    @GetMapping("/articles/filters")
+    public ResponseEntity<List<Article>> getAllByFilters(
+            @RequestParam String category,
+            @RequestParam(required = false) boolean freeShipping) throws NotFoundException {
+        List<Article> articles = articleService.getAllByCategory(category);
+        return new ResponseEntity<>(articleService.getAllByShipping(articles), HttpStatus.OK);
+    }
 }
