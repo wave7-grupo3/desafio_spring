@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 
-public class Product {
+public class Article {
     private Long productId;
     private String name;
     private String category;

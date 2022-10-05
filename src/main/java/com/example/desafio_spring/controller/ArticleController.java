@@ -1,7 +1,7 @@
 package com.example.desafio_spring.controller;
 
-import com.example.desafio_spring.model.Product;
-import com.example.desafio_spring.service.IProduct;
+import com.example.desafio_spring.model.Article;
+import com.example.desafio_spring.service.IArticle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,14 +11,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
-public class ProductController {
+public class ArticleController {
 
     @Autowired
-    private IProduct productService;
+    private IArticle articleService;
 
     @PostMapping("/insert-articles-request")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<List<Product>> createNewProduct(@RequestBody Product newProduct) {
-        return new ResponseEntity<>(productService.createNewProduct(newProduct), HttpStatus.CREATED);
+    public ResponseEntity<List<Article>> createNewArticle(@RequestBody Article newArticle) {
+        return new ResponseEntity<>(articleService.createNewArticle(newArticle), HttpStatus.CREATED);
     }
 }

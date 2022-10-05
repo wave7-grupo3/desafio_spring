@@ -1,6 +1,6 @@
 package com.example.desafio_spring.repository;
 
-import com.example.desafio_spring.model.Product;
+import com.example.desafio_spring.model.Article;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -12,29 +12,29 @@ import java.util.Arrays;
 import java.util.List;
 
 @Repository
-public class ProductRepository {
+public class ArticleRepository {
     ObjectMapper mapper = new ObjectMapper();
 
-    public List<Product> createNewProduct(Product newProduct) {
+    public List<Article> createNewArticle(Article newArticle) {
         ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
-        List<Product> productsList;
+        List<Article> articlesList;
 
         String LINK_FILE = "src/main/resources/products.json";
 
         try {
-            productsList = Arrays.asList(mapper.readValue(new File(LINK_FILE), Product[].class));
+            articlesList = Arrays.asList(mapper.readValue(new File(LINK_FILE), Article[].class));
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         }
 
-        productsList = new ArrayList<>(productsList);
-        productsList.add(newProduct);
+        articlesList = new ArrayList<>(articlesList);
+        articlesList.add(newArticle);
 
         try {
-            writer.writeValue(new File(LINK_FILE), productsList);
+            writer.writeValue(new File(LINK_FILE), articlesList);
         } catch (Exception ex) {
             System.out.println("Erro ao gravar o arquivo.");
         }
-        return productsList;
+        return articlesList;
     }
 }
