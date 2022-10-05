@@ -24,4 +24,11 @@ public class ArticleService implements IArticle {
                 .map(ArticleDTO::new)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<Article> getAll() throws NotFoundException {
+        List<Article> allArticles = articleRepository.getAll();
+        return allArticles;
+    }
+
 }

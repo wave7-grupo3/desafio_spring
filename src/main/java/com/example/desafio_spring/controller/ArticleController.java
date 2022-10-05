@@ -24,4 +24,9 @@ public class ArticleController {
     public ResponseEntity<List<ArticleDTO>> createNewArticle(@RequestBody Article newArticle) throws NotFoundException, WriterValueException {
         return new ResponseEntity<>(articleService.createNewArticle(newArticle), HttpStatus.CREATED);
     }
+
+    @GetMapping("/articles")
+    public ResponseEntity<List<Article>> getAll() throws NotFoundException {
+        return new ResponseEntity<>(articleService.getAll(), HttpStatus.OK);
+    }
 }

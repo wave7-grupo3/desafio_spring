@@ -15,19 +15,23 @@ import java.util.List;
 
 @Repository
 public class ArticleRepository {
+    String LINK_FILE = "src/main/resources/products.json";
     ObjectMapper mapper = new ObjectMapper();
 
-    public List<Article> createNewArticle(Article newArticle) throws NotFoundException, WriterValueException {
-        ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+    public List<Article> getAll() throws NotFoundException {
         List<Article> articlesList;
-
-        String LINK_FILE = "src/main/resources/products.json";
 
         try {
             articlesList = Arrays.asList(mapper.readValue(new File(LINK_FILE), Article[].class));
         } catch (Exception ex) {
             throw new NotFoundException("Article not found!");
         }
+        return articlesList;
+    }
+
+    public List<Article> createNewArticle(Article newArticle) throws WriterValueException, NotFoundException {
+        ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+        List<Article> articlesList = getAll();
 
         articlesList = new ArrayList<>(articlesList);
         articlesList.add(newArticle);
@@ -39,4 +43,5 @@ public class ArticleRepository {
         }
         return articlesList;
     }
+
 }
