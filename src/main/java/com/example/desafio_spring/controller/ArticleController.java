@@ -65,5 +65,4 @@ public class ArticleController {
         return new ResponseEntity<>(articleService.getAllSorted(articles, order), HttpStatus.OK);
     }
 
-
 }
