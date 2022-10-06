@@ -13,4 +13,5 @@ public interface IArticle {
     List<Article> getAllByCategory(String category) throws NotFoundException;
     List<Article> getAllByShipping(List<Article> articles, boolean freeShipping) throws NotFoundException;
     List<Article> getAllByPrestige(String prestige) throws NotFoundException;
+    List<Article> getAllSorted(List<Article> article, int order) throws NotFoundException;
 }

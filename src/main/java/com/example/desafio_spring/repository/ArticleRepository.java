@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -66,4 +67,30 @@ public class ArticleRepository {
                 .collect(Collectors.toList());
     }
 
+    public List<Article> getAllSorted(List<Article> article, Integer order) {
+        if(order == 0) {
+            return article.stream()
+                    .sorted(Comparator.comparing(Article::getName))
+                    .collect(Collectors.toList());
+        }
+
+        if(order == 1) {
+            return article.stream()
+                    .sorted(Comparator.comparing(Article::getName).reversed())
+                    .collect(Collectors.toList());
+        }
+
+        if(order == 2) {
+            return article.stream()
+                    .sorted(Comparator.comparing(Article::getPrice).reversed())
+                    .collect(Collectors.toList());
+        }
+
+        if(order == 3) {
+            return article.stream()
+                    .sorted(Comparator.comparing(Article::getPrice))
+                    .collect(Collectors.toList());
+        }
+        return article;
+    }
 }
