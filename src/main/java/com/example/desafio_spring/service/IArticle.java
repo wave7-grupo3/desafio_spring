@@ -11,5 +11,6 @@ public interface IArticle {
     List<ArticleDTO> createNewArticle(Article newArticle) throws NotFoundException, WriterValueException;
     List<Article> getAll() throws NotFoundException;
     List<Article> getAllByCategory(String category) throws NotFoundException;
-    List<Article> getAllByShipping(List<Article> articles);
+    List<Article> getAllByShipping(List<Article> articles, boolean freeShipping) throws NotFoundException;
+    List<Article> getAllByPrestige(String prestige) throws NotFoundException;
 }

@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 @Repository
 public class ArticleRepository {
-    String LINK_FILE = "src/main/resources/products.json";
+    private static final String LINK_FILE = "src/main/resources/products.json";
     ObjectMapper mapper = new ObjectMapper();
     List<Article> articlesList;
 
@@ -53,9 +53,16 @@ public class ArticleRepository {
                 .collect(Collectors.toList());
     }
 
-    public List<Article> getAllByShipping(List<Article> articles) {
+    public List<Article> getAllByShipping(List<Article> articles, boolean freeShipping) {
         return articles.stream()
-                .filter(Article::getFreeShipping)
+                .filter(article -> article.getFreeShipping().equals(freeShipping))
+                .collect(Collectors.toList());
+    }
+
+    public List<Article> getAllByPrestige(String prestige) throws NotFoundException {
+        articlesList = getAll();
+        return articlesList.stream()
+                .filter(article -> article.getPrestige().equals(prestige))
                 .collect(Collectors.toList());
     }
 

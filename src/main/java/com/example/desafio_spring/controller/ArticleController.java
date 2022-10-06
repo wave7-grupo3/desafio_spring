@@ -40,6 +40,17 @@ public class ArticleController {
             @RequestParam("category") String category,
             @RequestParam("freeShipping") boolean freeShipping) throws NotFoundException {
         List<Article> articles = articleService.getAllByCategory(category);
-        return new ResponseEntity<>(articleService.getAllByShipping(articles), HttpStatus.OK);
+        return new ResponseEntity<>(articleService.getAllByShipping(articles, freeShipping), HttpStatus.OK);
     }
+
+    @GetMapping(value = "/articles", params = {"freeShipping", "prestige"})
+    public ResponseEntity<List<Article>> getAllByPrestige(
+            @RequestParam("freeShipping") boolean freeShipping,
+            @RequestParam("prestige") String prestige
+    ) throws NotFoundException {
+        List<Article> articles = articleService.getAllByPrestige(prestige);
+        return new ResponseEntity<>(articleService.getAllByShipping(articles, freeShipping), HttpStatus.OK);
+    }
+
+
 }
