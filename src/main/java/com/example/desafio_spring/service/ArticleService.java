@@ -32,11 +32,35 @@ public class ArticleService implements IArticle {
 
     @Override
     public List<Article> getAllByCategory(String category) throws NotFoundException {
-        return articleRepository.getAllByCategory(category);
+        List<Article> articles = articleRepository.getAllByCategory(category);
+
+        if (articles.isEmpty()) {
+            throw new NotFoundException("Filter with this category not found!");
+        }
+
+        return articles;
     }
+
     @Override
-    public List<Article> getAllByShipping(List<Article> articles) {
-        return articleRepository.getAllByShipping(articles);
+    public List<Article> getAllByShipping(List<Article> articles, boolean freeShipping) throws NotFoundException {
+        List<Article> articleList = articleRepository.getAllByShipping(articles, freeShipping);
+
+        if (articleList.isEmpty()) {
+            throw new NotFoundException("Filter with this free shipping not found!");
+        }
+
+        return articleList;
+    }
+
+    @Override
+    public List<Article> getAllByPrestige(String prestige) throws NotFoundException {
+        List<Article> articles = articleRepository.getAllByPrestige(prestige);
+
+        if (articles.isEmpty()) {
+            throw new NotFoundException("Filter with this prestige not found!");
+        }
+
+        return articles;
     }
 
 }

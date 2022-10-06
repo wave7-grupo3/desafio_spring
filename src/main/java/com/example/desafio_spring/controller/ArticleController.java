@@ -25,21 +25,32 @@ public class ArticleController {
         return new ResponseEntity<>(articleService.createNewArticle(newArticle), HttpStatus.CREATED);
     }
 
-    @GetMapping("/articles")
+    @GetMapping(value = "/articles")
     public ResponseEntity<List<Article>> getAll() throws NotFoundException {
         return new ResponseEntity<>(articleService.getAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/articles/filter")
-    public ResponseEntity<List<Article>> getAllByCategory(@RequestParam String category) throws NotFoundException {
+    @GetMapping(value = "/articles", params= {"category"})
+    public ResponseEntity<List<Article>> getAllByCategory(@RequestParam("category") String category) throws NotFoundException {
         return new ResponseEntity<>(articleService.getAllByCategory(category), HttpStatus.OK);
     }
 
-    @GetMapping("/articles/filters")
+    @GetMapping(value = "/articles", params= {"category", "freeShipping"})
     public ResponseEntity<List<Article>> getAllByFilters(
-            @RequestParam String category,
-            @RequestParam(required = false) boolean freeShipping) throws NotFoundException {
+            @RequestParam("category") String category,
+            @RequestParam("freeShipping") boolean freeShipping) throws NotFoundException {
         List<Article> articles = articleService.getAllByCategory(category);
-        return new ResponseEntity<>(articleService.getAllByShipping(articles), HttpStatus.OK);
+        return new ResponseEntity<>(articleService.getAllByShipping(articles, freeShipping), HttpStatus.OK);
     }
+
+    @GetMapping(value = "/articles", params = {"freeShipping", "prestige"})
+    public ResponseEntity<List<Article>> getAllByPrestige(
+            @RequestParam("freeShipping") boolean freeShipping,
+            @RequestParam("prestige") String prestige
+    ) throws NotFoundException {
+        List<Article> articles = articleService.getAllByPrestige(prestige);
+        return new ResponseEntity<>(articleService.getAllByShipping(articles, freeShipping), HttpStatus.OK);
+    }
+
+
 }
