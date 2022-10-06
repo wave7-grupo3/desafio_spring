@@ -82,10 +82,15 @@ public class ArticleRepository {
 
         if(order == 2) {
             return article.stream()
-                    .sorted((a, b) -> b.getPrice().compareTo(a.getPrice()))
+                    .sorted(Comparator.comparing(Article::getPrice).reversed())
                     .collect(Collectors.toList());
         }
 
+        if(order == 3) {
+            return article.stream()
+                    .sorted(Comparator.comparing(Article::getPrice))
+                    .collect(Collectors.toList());
+        }
         return article;
     }
 }
