@@ -73,6 +73,12 @@ public class ArticleRepository {
                     .sorted(Comparator.comparing(Article::getName))
                     .collect(Collectors.toList());
         }
+
+        if(order == 1) {
+            return article.stream()
+                    .sorted(Comparator.comparing(Article::getName).reversed())
+                    .collect(Collectors.toList());
+        }
         return article;
     }
 }
