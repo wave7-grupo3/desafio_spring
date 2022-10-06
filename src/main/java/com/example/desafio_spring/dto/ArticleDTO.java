@@ -16,7 +16,7 @@ import java.io.Serializable;
 public class ArticleDTO implements Serializable {
     private Long productId;
     private String name;
-    private Long quantity;
+    private Integer quantity;
 
     public ArticleDTO(Article article) {
         this.productId = article.getProductId();

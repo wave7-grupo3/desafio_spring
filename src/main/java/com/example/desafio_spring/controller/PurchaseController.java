@@ -26,7 +26,8 @@ public class PurchaseController {
     }
 
     @PostMapping("/purchase-request")
-    public ResponseEntity<List<Article>> createNewPurchase(@RequestBody Purchase newPurchase) throws NotFoundException {
-        return new ResponseEntity<>(purchaseService.createNewPurchase(newPurchase.getArticlesPurchaseRequest()), HttpStatus.CREATED);
+    public ResponseEntity<PurchaseDTO> createNewPurchase(@RequestBody Purchase newPurchase) throws NotFoundException {
+        List<ArticleDTO> articlesNewPurchase = newPurchase.getArticlesPurchaseRequest();
+        return new ResponseEntity<>(purchaseService.createNewPurchase(articlesNewPurchase), HttpStatus.CREATED);
     }
 }

@@ -14,5 +14,5 @@ import java.util.List;
 public class Ticket {
     private Long id;
     private List<Article> articles;
-    private Long total;
+    private Double total;
 }

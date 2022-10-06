@@ -33,7 +33,6 @@ public class PurchaseRepository {
         ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
         purchasesList = getAllPurchases();
 
-//        purchasesList = new ArrayList<>(purchasesList);
         purchasesList.addAll(newPurchase);
 
         try {

@@ -11,6 +11,7 @@ import com.example.desafio_spring.repository.PurchaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,25 +24,40 @@ public class PurchaseService implements IPurchase {
     @Autowired
     private ArticleRepository articleRepository;
 
-
     @Override
     public List<ArticleDTO> getAllPurchases() throws NotFoundException {
         return purchaseRepository.getAllPurchases();
     }
 
     @Override
-    public List<Article> createNewPurchase(List<ArticleDTO> newPurchase) throws NotFoundException {
+    public PurchaseDTO createNewPurchase(List<ArticleDTO> newPurchase) throws NotFoundException {
         List<Article> articleList = articleRepository.getAll();
         List<Article> filteredArticle = new ArrayList<>();
+        Double total;
 
         newPurchase.stream()
                 .forEach(purchase -> {
                     List<Article> article = articleList.stream()
                             .filter(art -> art.getProductId() == purchase.getProductId())
                             .collect(Collectors.toList());
+                    if (article.get(0).getQuantity() >= purchase.getQuantity()) {
+                        article.get(0).setQuantity(purchase.getQuantity());
+                    }
                     filteredArticle.addAll(article);
                 });
 
-        return filteredArticle;
+        total = filteredArticle.stream()
+                .map(article -> article.getPrice() * article.getQuantity())
+                .reduce(0.0, Double::sum);
+
+        Ticket ticket = Ticket.builder()
+                .id(530L)
+                .articles(filteredArticle)
+                .total(total)
+                .build();
+
+        return PurchaseDTO.builder()
+                .ticket(ticket)
+                .build();
     }
 }

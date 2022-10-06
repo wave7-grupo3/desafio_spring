@@ -16,8 +16,8 @@ public class Article {
     private String name;
     private String category;
     private String brand;
-    private Long price;
-    private Long quantity;
+    private Double price;
+    private Integer quantity;
     private Boolean freeShipping;
     private String prestige;
 }
