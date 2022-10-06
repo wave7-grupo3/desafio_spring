@@ -63,4 +63,14 @@ public class ArticleService implements IArticle {
         return articles;
     }
 
+    @Override
+    public List<Article> getAllSorted(List<Article> article, int order) throws NotFoundException {
+        List<Article> articles = articleRepository.getAllSorted(article, order);
+
+        if (articles.isEmpty()) {
+            throw new NotFoundException("Filter order empty!");
+        }
+
+        return articles;
+    }
 }

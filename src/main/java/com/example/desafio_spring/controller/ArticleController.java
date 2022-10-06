@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -50,6 +52,17 @@ public class ArticleController {
     ) throws NotFoundException {
         List<Article> articles = articleService.getAllByPrestige(prestige);
         return new ResponseEntity<>(articleService.getAllByShipping(articles, freeShipping), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "articles", params = {"category", "freeShipping", "order"})
+    public ResponseEntity<List<Article>> getAllSorted(
+            @RequestParam("category") String category,
+            @RequestParam("freeShipping") boolean freeShipping,
+            @RequestParam("order") Integer order
+    ) throws  NotFoundException {
+        //List<List<Article>> articles = Arrays.asList(getAllByFilters(category, freeShipping).getBody());
+        List<Article> articles = getAllByFilters(category, freeShipping).getBody();
+        return new ResponseEntity<>(articleService.getAllSorted(articles, order), HttpStatus.OK);
     }
 
 
