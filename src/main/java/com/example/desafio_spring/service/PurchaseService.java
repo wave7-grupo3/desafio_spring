@@ -1,6 +1,7 @@
 package com.example.desafio_spring.service;
 
 import com.example.desafio_spring.advice.exception.NotFoundException;
+import com.example.desafio_spring.advice.exception.WriterValueException;
 import com.example.desafio_spring.dto.ArticleDTO;
 import com.example.desafio_spring.dto.PurchaseDTO;
 import com.example.desafio_spring.model.Article;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,27 +30,25 @@ public class PurchaseService implements IPurchase {
     }
 
     @Override
-    public PurchaseDTO createNewPurchase(List<ArticleDTO> newPurchase) throws NotFoundException {
+    public PurchaseDTO createNewPurchase(List<ArticleDTO> newPurchase) throws NotFoundException, WriterValueException {
         List<Article> articleList = articleRepository.getAll();
         List<Article> filteredArticle = new ArrayList<>();
         Double total;
 
-        newPurchase.stream()
+        newPurchase
                 .forEach(purchase -> {
                     List<Article> article = articleList.stream()
-                            .filter(art -> art.getProductId() == purchase.getProductId())
+                            .filter(art -> Objects.equals(art.getProductId(), purchase.getProductId()))
                             .collect(Collectors.toList());
-                    if(!article.isEmpty()) {
-                        if (article.get(0).getQuantity() >= purchase.getQuantity()) {
-                            article.get(0).setQuantity(purchase.getQuantity());
-                        }
+                    try {
+                        verifyInventory(purchase, article);
+                    } catch (WriterValueException | NotFoundException e) {
+                        throw new RuntimeException(e);
                     }
                     filteredArticle.addAll(article);
                 });
 
-        if(newPurchase.size() != filteredArticle.size()) {
-            throw new NotFoundException("Some article wasn't found!");
-        }
+        articleRepository.updateInventory(filteredArticle);
 
         total = filteredArticle.stream()
                 .map(article -> article.getPrice() * article.getQuantity())
@@ -63,5 +63,21 @@ public class PurchaseService implements IPurchase {
         return PurchaseDTO.builder()
                 .ticket(ticket)
                 .build();
+    }
+
+    private void verifyInventory(ArticleDTO purchase, List<Article> article) throws WriterValueException, NotFoundException {
+        if(!article.isEmpty()) {
+            try {
+                if (article.get(0).getQuantity() >= purchase.getQuantity()) {
+                    article.get(0).setQuantity(purchase.getQuantity());
+                } else {
+                    throw new NotFoundException("Insufficient quantity of " + article.get(0).getName() + " in inventory");
+                }
+            } catch (Exception ex) {
+                throw new NotFoundException(ex.getMessage());
+            }
+        } else {
+            throw new NotFoundException("Some article wasn't found!");
+        }
     }
 }
