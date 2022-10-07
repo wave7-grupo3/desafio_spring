@@ -8,6 +8,7 @@ import com.example.desafio_spring.model.Article;
 import com.example.desafio_spring.model.Ticket;
 import com.example.desafio_spring.repository.ArticleRepository;
 import com.example.desafio_spring.repository.PurchaseRepository;
+import com.example.desafio_spring.repository.ShoppingCartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,9 @@ public class PurchaseService implements IPurchase {
 
     @Autowired
     private ArticleRepository articleRepository;
+
+    @Autowired
+    private ShoppingCartRepository shoppingCartRepository;
 
     @Override
     public List<ArticleDTO> getAllPurchases() throws NotFoundException {
@@ -50,18 +54,31 @@ public class PurchaseService implements IPurchase {
 
         articleRepository.updateInventory(filteredArticle);
 
+        Ticket ticket = buildTicket(filteredArticle);
+
+        savePurchaseInCart(ticket);
+
+        return PurchaseDTO.builder()
+                .ticket(ticket)
+                .build();
+    }
+
+    private void savePurchaseInCart(Ticket ticket) throws NotFoundException, WriterValueException {
+        shoppingCartRepository.save(ticket);
+    }
+
+    private Ticket buildTicket(List<Article> filteredArticle) throws NotFoundException {
+        Double total;
         total = filteredArticle.stream()
                 .map(article -> article.getPrice() * article.getQuantity())
                 .reduce(0.0, Double::sum);
 
-        Ticket ticket = Ticket.builder()
-                .id(530L)
+        Long ticketID = (long) (shoppingCartRepository.getAll().size() + 1);
+
+        return Ticket.builder()
+                .id(ticketID)
                 .articles(filteredArticle)
                 .total(total)
-                .build();
-
-        return PurchaseDTO.builder()
-                .ticket(ticket)
                 .build();
     }
 
