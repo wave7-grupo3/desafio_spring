@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CustomerService implements ICustomer{
@@ -30,6 +31,21 @@ public class CustomerService implements ICustomer{
         }
 
         return customerRepository.createNewCustomer(newCustomer);
+    }
+
+    @Override
+    public List<Customer> getAllByState(String uf) throws NotFoundException {
+        List<Customer> customers = customerRepository.getAll();
+
+        List<Customer> filteredCustomer = customers.stream()
+                .filter(c -> c.getUf().equalsIgnoreCase(uf))
+                .collect(Collectors.toList());
+
+        if(filteredCustomer.isEmpty()) {
+            throw new NotFoundException("No results found for the search: " + uf);
+        }
+
+        return  filteredCustomer;
     }
 
 }

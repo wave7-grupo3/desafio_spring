@@ -16,5 +16,5 @@ public class Customer implements Serializable {
     private UUID id=UUID.randomUUID();
     private String cpf;
     private String name;
-    private String state;
+    private String uf;
 }

@@ -10,4 +10,5 @@ import java.util.List;
 public interface ICustomer {
     List<Customer> getAll() throws NotFoundException;
     List<Customer> createNewCustomer(Customer newCustomer) throws WriterValueException, NotFoundException, ConflictException;
+    List<Customer> getAllByState(String uf) throws NotFoundException;
 }

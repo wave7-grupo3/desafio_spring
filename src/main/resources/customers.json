@@ -2,10 +2,10 @@
   "id" : "b0d61a5b-6da0-41be-863e-229ad1ab7cc2",
   "cpf" : "222.555.666-15",
   "name" : "Teste",
-  "state" : "São Paulo"
+  "uf" : "MG"
 }, {
   "id" : "dd92695d-1b74-436b-be28-99c6b4297af5",
   "cpf" : "222.555.666-19",
   "name" : "Teste",
-  "state" : "São Paulo"
+  "uf" : "SP"
 } ]
