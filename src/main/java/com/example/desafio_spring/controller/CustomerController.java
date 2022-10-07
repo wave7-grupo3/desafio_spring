@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -23,8 +24,14 @@ public class CustomerController {
         return new ResponseEntity<>(customerService.getAll(), HttpStatus.OK);
     }
 
-    @PostMapping("/customer-profile")
+    @PostMapping(value ="/customer-profile")
     public ResponseEntity<List<Customer>> createNewCustomer(@RequestBody Customer newCustomer) throws WriterValueException, NotFoundException, ConflictException {
         return new ResponseEntity<>(customerService.createNewCustomer(newCustomer), HttpStatus.CREATED);
     }
+
+    @GetMapping(value = "/customer-profile", params= {"uf"})
+    public ResponseEntity<List<Customer>> getAllByUf(@RequestParam("uf") String uf) throws NotFoundException {
+        return new ResponseEntity<>(customerService.getAllByState(uf), HttpStatus.OK);
+    }
+
 }

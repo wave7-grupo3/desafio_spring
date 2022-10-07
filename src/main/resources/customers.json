@@ -2,10 +2,35 @@
   "id" : "b0d61a5b-6da0-41be-863e-229ad1ab7cc2",
   "cpf" : "222.555.666-15",
   "name" : "Teste",
-  "state" : "São Paulo"
+  "uf" : "MG"
 }, {
   "id" : "dd92695d-1b74-436b-be28-99c6b4297af5",
   "cpf" : "222.555.666-19",
   "name" : "Teste",
-  "state" : "São Paulo"
+  "uf" : "SP"
+}, {
+  "id" : "daf178b6-a216-4fb3-991c-aee04458ef5b",
+  "cpf" : "22255566615",
+  "name" : "",
+  "uf" : "SP"
+}, {
+  "id" : "5bdcb329-25ac-4292-9423-0956b4017383",
+  "cpf" : "22255566616",
+  "name" : null,
+  "uf" : "SP"
+}, {
+  "id" : "831f82ce-9a06-4d24-af7b-a68a88aabb91",
+  "cpf" : "22255566617",
+  "name" : "",
+  "uf" : "SP"
+}, {
+  "id" : "9d82505d-a7c6-4b95-bc61-7d22eb93f663",
+  "cpf" : "22255566618",
+  "name" : "",
+  "uf" : "SP"
+}, {
+  "id" : "344b6245-f61c-4acd-9967-8922be1c4aa3",
+  "cpf" : "22255566620",
+  "name" : "",
+  "uf" : "SP"
 } ]
