@@ -1,5 +1,6 @@
 package com.example.desafio_spring.advice;
 
+import com.example.desafio_spring.advice.exception.ConflictException;
 import com.example.desafio_spring.advice.exception.NotFoundException;
 import com.example.desafio_spring.advice.exception.WriterValueException;
 import org.springframework.http.HttpStatus;
@@ -32,5 +33,16 @@ public class HandlerException extends Exception {
                 .timeStamp(LocalDateTime.now())
                 .build();
         return new ResponseEntity<>(exceptionDetails, HttpStatus.NOT_ACCEPTABLE);
+    }
+
+    @ExceptionHandler(ConflictException.class)
+    public ResponseEntity<ExceptionDetails> handlerConflictException(ConflictException ex) {
+        ExceptionDetails exceptionDetails = ExceptionDetails.builder()
+                .title("Conflict!")
+                .message(ex.getMessage())
+                .status(HttpStatus.CONFLICT.value())
+                .timeStamp(LocalDateTime.now())
+                .build();
+        return new ResponseEntity<>(exceptionDetails, HttpStatus.CONFLICT);
     }
 }

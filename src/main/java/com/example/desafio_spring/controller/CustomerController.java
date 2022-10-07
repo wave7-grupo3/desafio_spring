@@ -1,5 +1,6 @@
 package com.example.desafio_spring.controller;
 
+import com.example.desafio_spring.advice.exception.ConflictException;
 import com.example.desafio_spring.advice.exception.NotFoundException;
 import com.example.desafio_spring.advice.exception.WriterValueException;
 import com.example.desafio_spring.model.Customer;
@@ -23,7 +24,7 @@ public class CustomerController {
     }
 
     @PostMapping("/customer-profile")
-    public ResponseEntity<List<Customer>> createNewCustomer(@RequestBody Customer newCustomer) throws WriterValueException, NotFoundException {
+    public ResponseEntity<List<Customer>> createNewCustomer(@RequestBody Customer newCustomer) throws WriterValueException, NotFoundException, ConflictException {
         return new ResponseEntity<>(customerService.createNewCustomer(newCustomer), HttpStatus.CREATED);
     }
 }

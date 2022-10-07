@@ -1,5 +1,6 @@
 package com.example.desafio_spring.service;
 
+import com.example.desafio_spring.advice.exception.ConflictException;
 import com.example.desafio_spring.advice.exception.NotFoundException;
 import com.example.desafio_spring.advice.exception.WriterValueException;
 import com.example.desafio_spring.model.Customer;
@@ -20,7 +21,14 @@ public class CustomerService implements ICustomer{
     }
 
     @Override
-    public List<Customer> createNewCustomer(Customer newCustomer) throws WriterValueException, NotFoundException {
+    public List<Customer> createNewCustomer(Customer newCustomer) throws WriterValueException, ConflictException, NotFoundException {
+        List<Customer> customerList = customerRepository.getAll();
+        boolean customerExist = customerList.stream().anyMatch((c) -> c.getCpf().equals(newCustomer.getCpf()));
+
+        if(customerExist) {
+            throw new ConflictException("Customer already exists!");
+        }
+
         return customerRepository.createNewCustomer(newCustomer);
     }
 
