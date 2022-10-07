@@ -93,4 +93,25 @@ public class ArticleRepository {
         }
         return article;
     }
+
+    public void updateInventory(List<Article> updatedArticleList) throws NotFoundException, WriterValueException {
+        ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+        articlesList = getAll();
+
+        articlesList
+                .forEach(article -> {
+                    updatedArticleList
+                            .forEach(updatedArticle -> {
+                                if (article.getProductId().equals(updatedArticle.getProductId())) {
+                                    Integer quantity = article.getQuantity() - updatedArticle.getQuantity();
+                                    article.setQuantity(quantity);
+                                }
+                            });
+                    });
+        try {
+            writer.writeValue(new File(LINK_FILE), articlesList);
+        } catch (Exception ex) {
+            throw new WriterValueException("The file wasn't written!");
+        }
+    }
 }
