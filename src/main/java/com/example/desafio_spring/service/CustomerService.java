@@ -1,8 +1,8 @@
 package com.example.desafio_spring.service;
 
-import com.example.desafio_spring.advice.exception.ConflictException;
-import com.example.desafio_spring.advice.exception.NotFoundException;
-import com.example.desafio_spring.advice.exception.WriterValueException;
+import com.example.desafio_spring.advisor.exception.ConflictException;
+import com.example.desafio_spring.advisor.exception.NotFoundException;
+import com.example.desafio_spring.advisor.exception.WriterValueException;
 import com.example.desafio_spring.model.Customer;
 import com.example.desafio_spring.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;

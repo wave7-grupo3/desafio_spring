@@ -1,6 +1,6 @@
 package com.example.desafio_spring.controller;
 
-import com.example.desafio_spring.advice.exception.NotFoundException;
+import com.example.desafio_spring.advisor.exception.NotFoundException;
 import com.example.desafio_spring.dto.CartDTO;
 import com.example.desafio_spring.service.IShoppingCart;
 import org.springframework.beans.factory.annotation.Autowired;

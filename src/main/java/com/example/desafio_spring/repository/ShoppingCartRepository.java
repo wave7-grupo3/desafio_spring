@@ -1,7 +1,7 @@
 package com.example.desafio_spring.repository;
 
-import com.example.desafio_spring.advice.exception.NotFoundException;
-import com.example.desafio_spring.advice.exception.WriterValueException;
+import com.example.desafio_spring.advisor.exception.NotFoundException;
+import com.example.desafio_spring.advisor.exception.WriterValueException;
 import com.example.desafio_spring.model.Ticket;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;

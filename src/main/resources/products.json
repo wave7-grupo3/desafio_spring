@@ -1,122 +1,109 @@
-[
-  {
-    "productId": 1,
-    "name": "Serra de Bancada",
-    "category": "Ferramentas",
-    "brand": "FORTGPRO",
-    "price": 1800.00,
-    "quantity": 5,
-    "freeShipping": true,
-    "prestige": "****"
-  },
-  {
-    "productId": 2,
-    "name": "Furadeira",
-    "category": "Ferramentas",
-    "brand": "Black & Decker",
-    "price": 500,
-    "quantity": 7,
-    "freeShipping": true,
-    "prestige": "****"
-  },
-  {
-    "productId": 3,
-    "name": "Soldadora",
-    "category": "Ferramentas",
-    "brand": "Black & Decker",
-    "price": 350.00,
-    "quantity": 10,
-    "freeShipping": true,
-    "prestige": "***"
-  },
-  {
-    "productId": 4,
-    "name": "Chuteira",
-    "category": "Esportes",
-    "brand": "Adidas",
-    "price": 235.00,
-    "quantity": 6,
-    "freeShipping": true,
-    "prestige": "*****"
-  },
-  {
-    "productId": 5,
-    "name": "Mini Cama elastica",
-    "category": "Esportes",
-    "brand": "Starboard",
-    "price": 183.00,
-    "quantity": 4,
-    "freeShipping": true,
-    "prestige": "*****"
-  },
-  {
-    "productId": 6,
-    "name": "Camiseta",
-    "category": "Esportes",
-    "brand": "Topper",
-    "price": 80.00,
-    "quantity": 2,
-    "freeShipping": false,
-    "prestige": "***"
-  },
-  {
-    "productId": 7,
-    "name": "Redmi Note 9",
-    "category": "Celulares",
-    "brand": "Xiaomi",
-    "price": 2800.00,
-    "quantity": 15,
-    "freeShipping": true,
-    "prestige": "****"
-  },
-  {
-    "productId": 8,
-    "name": "Smartwatch",
-    "category": "Celulares",
-    "brand": "Noga",
-    "price": 1200.00,
-    "quantity": 5,
-    "freeShipping": true,
-    "prestige": "**"
-  },
-  {
-    "productId": 9,
-    "name": "Camisa",
-    "category": "Roupas",
-    "brand": "Fila",
-    "price": 79.00,
-    "quantity": 2,
-    "freeShipping": false,
-    "prestige": "***"
-  },
-  {
-    "productId": 10,
-    "name": "Calcas",
-    "category": "Roupas",
-    "brand": "Oakley",
-    "price": 73.00,
-    "quantity": 6,
-    "freeShipping": false,
-    "prestige": "***"
-  },
-  {
-    "productId": 11,
-    "name": "Meias",
-    "category": "Roupas",
-    "brand": "Gonew",
-    "price": 10.00,
-    "quantity": 8,
-    "freeShipping": false,
-    "prestige": "*"
-  },
-  {
-    "productId": 12,
-    "name": "Shorts",
-    "category": "Roupas",
-    "brand": "Lacoste",
-    "price": 275.00,
-    "quantity": 9,
-    "freeShipping": true,
-    "prestige": "***"
-  }
-]
+[ {
+  "productId" : "1fca9b91-8eba-4b8a-bb80-9ae727fdfe61",
+  "name" : "Serra de Bancada",
+  "category" : "Ferramentas",
+  "brand" : "FORTGPRO",
+  "price" : 1800.0,
+  "quantity" : 5,
+  "freeShipping" : true,
+  "prestige" : "****"
+}, {
+  "productId" : "bcc8f311-49c8-45d5-9c6c-f89f09d790db",
+  "name" : "Furadeira",
+  "category" : "Ferramentas",
+  "brand" : "Black & Decker",
+  "price" : 500.0,
+  "quantity" : 7,
+  "freeShipping" : true,
+  "prestige" : "****"
+}, {
+  "productId" : "7b69f3d9-1ba2-4878-a8d0-33a16389860a",
+  "name" : "Soldadora",
+  "category" : "Ferramentas",
+  "brand" : "Black & Decker",
+  "price" : 350.0,
+  "quantity" : 10,
+  "freeShipping" : true,
+  "prestige" : "***"
+}, {
+  "productId" : "43ef7e1c-388d-4d31-83d0-fa2660ea574f",
+  "name" : "Chuteira",
+  "category" : "Esportes",
+  "brand" : "Adidas",
+  "price" : 235.0,
+  "quantity" : 6,
+  "freeShipping" : true,
+  "prestige" : "*****"
+}, {
+  "productId" : "6dd084e4-dff2-4e6d-ba82-bcb8e9e2e388",
+  "name" : "Mini Cama elastica",
+  "category" : "Esportes",
+  "brand" : "Starboard",
+  "price" : 183.0,
+  "quantity" : 4,
+  "freeShipping" : true,
+  "prestige" : "*****"
+}, {
+  "productId" : "27f2b1e0-ebaa-4c49-8146-a21313590474",
+  "name" : "Camiseta",
+  "category" : "Esportes",
+  "brand" : "Topper",
+  "price" : 80.0,
+  "quantity" : 2,
+  "freeShipping" : false,
+  "prestige" : "***"
+}, {
+  "productId" : "311b217f-9910-4143-a6d0-d447388d5886",
+  "name" : "Redmi Note 9",
+  "category" : "Celulares",
+  "brand" : "Xiaomi",
+  "price" : 2800.0,
+  "quantity" : 15,
+  "freeShipping" : true,
+  "prestige" : "****"
+}, {
+  "productId" : "01fdc526-8973-463c-8b59-cddb10678e59",
+  "name" : "Smartwatch",
+  "category" : "Celulares",
+  "brand" : "Noga",
+  "price" : 1200.0,
+  "quantity" : 5,
+  "freeShipping" : true,
+  "prestige" : "**"
+}, {
+  "productId" : "fa03499d-9bf1-443c-97e7-af9d05c7d7d5",
+  "name" : "Camisa",
+  "category" : "Roupas",
+  "brand" : "Fila",
+  "price" : 79.0,
+  "quantity" : 2,
+  "freeShipping" : false,
+  "prestige" : "***"
+}, {
+  "productId" : "90c2962f-3419-48da-8912-cb2778e3cde2",
+  "name" : "Calcas",
+  "category" : "Roupas",
+  "brand" : "Oakley",
+  "price" : 73.0,
+  "quantity" : 6,
+  "freeShipping" : false,
+  "prestige" : "***"
+}, {
+  "productId" : "9106c0a4-668e-43b2-b590-b775b21f3a74",
+  "name" : "Meias",
+  "category" : "Roupas",
+  "brand" : "Gonew",
+  "price" : 10.0,
+  "quantity" : 8,
+  "freeShipping" : false,
+  "prestige" : "*"
+}, {
+  "productId" : "3a0a809a-c8bc-4781-8510-77042d409694",
+  "name" : "Meias",
+  "category" : "Roupas",
+  "brand" : "Gonew",
+  "price" : 10.0,
+  "quantity" : 8,
+  "freeShipping" : false,
+  "prestige" : "*"
+} ]
