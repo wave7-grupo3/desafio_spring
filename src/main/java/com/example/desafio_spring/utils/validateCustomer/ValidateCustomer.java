@@ -5,13 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
 public class ValidateCustomer {
-    private String cpf;
-    private String name;
-    private String uf;
 
     public String verifyCPF(String cpf) throws ConflictException {
         if (cpf == null || cpf.isEmpty()) {

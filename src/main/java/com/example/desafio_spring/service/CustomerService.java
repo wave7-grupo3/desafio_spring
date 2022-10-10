@@ -17,8 +17,7 @@ public class CustomerService extends ValidateCustomer implements ICustomer {
     @Autowired
     private CustomerRepository customerRepository;
 
-    @Autowired
-    private ValidateCustomer validateCustomer;
+    ValidateCustomer validateCustomer = new ValidateCustomer();
 
     @Override
     public List<Customer> getAll() throws NotFoundException {
@@ -32,9 +31,6 @@ public class CustomerService extends ValidateCustomer implements ICustomer {
         String cpf = newCustomer.getCpf();
         String uf = newCustomer.getUf();
 
-//        if(name == null || cpf == null || uf == null || name.isEmpty() || cpf.isEmpty() || uf.isEmpty()) {
-//            throw new ConflictException("Invalid fields");
-//        }
         validateCustomer.verifyCPF(cpf);
         validateCustomer.verifyName(name);
         validateCustomer.verifyUF(uf);
