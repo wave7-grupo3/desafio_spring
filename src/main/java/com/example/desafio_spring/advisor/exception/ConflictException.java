@@ -1,4 +1,4 @@
-package com.example.desafio_spring.advice.exception;
+package com.example.desafio_spring.advisor.exception;
 
 public class ConflictException extends Exception {
     public ConflictException(String message) {

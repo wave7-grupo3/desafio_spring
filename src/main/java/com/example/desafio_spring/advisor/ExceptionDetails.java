@@ -1,4 +1,4 @@
-package com.example.desafio_spring.advice;
+package com.example.desafio_spring.advisor;
 
 import lombok.Builder;
 import lombok.Data;

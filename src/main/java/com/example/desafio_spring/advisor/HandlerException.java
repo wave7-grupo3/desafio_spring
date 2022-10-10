@@ -1,8 +1,8 @@
-package com.example.desafio_spring.advice;
+package com.example.desafio_spring.advisor;
 
-import com.example.desafio_spring.advice.exception.ConflictException;
-import com.example.desafio_spring.advice.exception.NotFoundException;
-import com.example.desafio_spring.advice.exception.WriterValueException;
+import com.example.desafio_spring.advisor.exception.ConflictException;
+import com.example.desafio_spring.advisor.exception.NotFoundException;
+import com.example.desafio_spring.advisor.exception.WriterValueException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
