@@ -6,13 +6,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 
 public class Article {
-    private Long productId;
+    private UUID productId=UUID.randomUUID();
     private String name;
     private String category;
     private String brand;
@@ -20,4 +22,5 @@ public class Article {
     private Integer quantity;
     private Boolean freeShipping;
     private String prestige;
+
 }
