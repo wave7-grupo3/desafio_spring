@@ -47,7 +47,7 @@ The routes used were idealized to make the application more dynamic and function
 ### API Documentation
 The tool chosen to document the API was Postman. This choice was due to the ease of sharing endpoint information in real time, since when updating the application locally, other team members receive this update instantly.
 
-:warning: Access the documentation [here]().
+:warning: Access the documentation [here](https://documenter.getpostman.com/view/23644142/2s83ziPiu8).
 
 
 ## How to access the project
@@ -115,7 +115,7 @@ As rotas utilizadas foram idealizadas para deixar a aplicação mais dinâmica e
 ### Documentação da API
 A ferramenta escolhida para documentar a API foi o Postman. Esta escolha se deu pela facilidade em compartilhar as informações dos endpoints em tempo real, uma vez que ao atualizar a aplicação localmente, os demais membros da equipe recebem essa atualização instantaneamente.
 
-:warning: Acesse a documentação [aqui]().
+:warning: Acesse a documentação [aqui](https://documenter.getpostman.com/view/23644142/2s83ziPiu8).
 
 
 ## Como acessar o projeto
